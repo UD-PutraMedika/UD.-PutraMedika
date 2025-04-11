@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keranjang - PUTRA Medika</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .brand-name {
+            margin: 0;
+        }
+
+        .brand-slogan {
+            margin: 0;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .cart-layout {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+            gap: 20px;
+        }
+
+        .cart-left,
+        .cart-right {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-left {
+            flex: 2;
+        }
+
+        .cart-right {
+            flex: 1;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item .info {
+            flex: 1;
+        }
+
+        .cart-item .price {
+            font-weight: bold;
+        }
+
+        .delivery-options,
+        .payment-method {
+            margin-top: 30px;
+        }
+
+        .delivery-options label,
+        .payment-method label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .payment-method img {
+            width: 32px;
+            height: auto;
+        }
+
+        .total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .btn-pay {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn-pay:hover {
+            background-color: #0056b3;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: red;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .wa-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #25d366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .wa-float:hover {
+            background-color: #1ebe5d;
+        }
+
+        .wa-float img {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <h1 class="brand-name">PUTRA Medika</h1>
+            <p class="brand-slogan">ALAT-ALAT KESEHATAN PREMIER</p>
+        </div>
+    </header>
+
+    <div class="cart-layout">
+        <!-- Kiri: Daftar Produk -->
+        <div class="cart-left">
+            <h2>Keranjang Belanja</h2>
+            <div id="cartItems"></div>
+
+            <!-- Pengiriman -->
+            <div class="delivery-options">
+                <h3>Pengiriman</h3>
+                <label><input type="radio" name="delivery" value="JNE" checked> delivery PutraMedika (Sby-Sda)</label>
+                <label><input type="radio" name="delivery" value="J&T"> J&T (Biaya Menyusul)</label>
+                <label><input type="radio" name="delivery" value="SiCepat"> Ambil Di Tempat (Biaya Menyusul)</label>
+
+                <div style="margin-top: 20px; background-color: #fff8e1; padding: 10px 15px; border-left: 4px solid #ffc107; border-radius: 6px;">
+                    <strong>Catatan:</strong><br>
+                    Setelah melakukan pembayaran, <b>jangan lupa kirim bukti transfer</b> ke WhatsApp kami agar pesanan diproses. 
+                    <br>
+                    <br>
+                    <b>Tanyakan Stok Barang Juga yaa :) Di WhatsApp </b>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kanan: Pembayaran -->
+        <div class="cart-right">
+            <h3>Ringkasan Pembayaran</h3>
+            <div class="total" id="totalAmount">Total: Rp 0</div>
+
+            <div class="payment-method">
+                <h4>Metode Pembayaran</h4>
+
+                <label><input type="radio" name="payment" value="COD" checked> Bayar di Tempat (COD)</label>
+                <label>
+                    <input type="radio" name="payment" value="BCA">
+                    <img src="https://media-eu.jobylon.com/CACHE/companies/company-logo/bank-central-asia/halobca.616d9ea2/786b9469f46e2eaf6d11a1ddffe596f0.jpg" alt="BCA">
+                    BCA - 081282772 (Ice Trisnawati)
+                </label>
+                <label>
+                    <input type="radio" name="payment" value="Jago">
+                    <img src="https://companiesmarketcap.com/img/company-logos/256/ARTO.JK.webp" alt="Jago">
+                    Jago - 081282772 (Ice Trisnawati)
+                </label>
+                <label>
+                    <input type="radio" name="payment" value="Dana">
+                    <img src="https://images.seeklogo.com/logo-png/39/1/dana-e-wallet-app-logo-png_seeklogo-399948.png" alt="Dana">
+                    Dana - 081282772 (Ice Trisnawati)
+                </label>
+            </div>
+
+            <button class="btn-pay" onclick="checkout()">Bayar Sekarang</button>
+        </div>
+    </div>
+
+    <!-- Tombol Chat WhatsApp -->
+    <a href="https://wa.me/6281234567890?text=Halo%20PUTRA%20Medika%2C%20saya%20ingin%20bertanya%20tentang%20produk%20atau%20pesanan%20saya." class="wa-float" target="_blank" title="Chat via WhatsApp">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+    </a>
+
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsDiv = document.getElementById('cartItems');
+        const totalAmountDiv = document.getElementById('totalAmount');
+
+        let total = 0;
+
+        function renderCart() {
+            cartItemsDiv.innerHTML = '';
+            total = 0;
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = "<p>Keranjang kosong.</p>";
+                totalAmountDiv.textContent = "Total: Rp 0";
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                itemDiv.innerHTML = `
+                    <div class="info">
+                        <div><strong>${item.nama || "Produk Tanpa Nama"}</strong></div>
+                        <div>Rp ${Number(item.harga).toLocaleString()}</div>
+                    </div>
+                    <div>
+                        <button class="remove-btn" onclick="removeItem(${index})">Hapus</button>
+                    </div>`;
+                cartItemsDiv.appendChild(itemDiv);
+                total += Number(item.harga);
+            });
+
+            updateTotal();
+        }
+
+        function getDeliveryFee() {
+            const checked = document.querySelector('input[name="delivery"]:checked');
+            return checked && checked.value === 'JNE' ? 50000 : 0;
+        }
+
+        function updateTotal() {
+            const finalTotal = total + getDeliveryFee();
+            totalAmountDiv.textContent = `Total: Rp ${finalTotal.toLocaleString()}`;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Keranjang kosong. Silakan tambahkan produk terlebih dahulu.");
+                return;
+            }
+
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const totalText = totalAmountDiv.textContent;
+
+            alert(`Pembayaran dengan metode: ${paymentMethod}\n${totalText}`);
+            // Tambahkan redirect/cetak invoice sesuai kebutuhan
+        }
+
+        document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+            radio.addEventListener('change', updateTotal);
+        });
+
+        renderCart();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invoice - PUTRA Medika</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f4f7fa;
+      padding: 20px;
+    }
+
+    .invoice-box {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      color: #333;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 60px;
+      margin-right: 15px;
+    }
+
+    .logo h2 {
+      margin: 0;
+      color: #007bff;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .info div {
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    table thead {
+      background-color: #007bff;
+      color: white;
+    }
+
+    table th, table td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .note {
+      font-size: 14px;
+      background: #fff8e1;
+      border-left: 4px solid #ffc107;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+    }
+
+    .btn-print {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+
+    @media print {
+      .btn-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="invoice-box" id="invoiceBox">
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Medical_icon.png" alt="Logo" />
+    <div>
+      <h2>PUTRA Medika</h2>
+      <small>ALAT-ALAT KESEHATAN PREMIER</small>
+    </div>
+  </div>
+
+  <div class="info">
+    <div>
+      <strong>Invoice Untuk:</strong><br />
+      Nama Customer<br />
+      Alamat Customer<br />
+      Telepon: 08xxxx
+    </div>
+    <div>
+      <strong>Tanggal:</strong><br />
+      <span id="tanggalSekarang"></span>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nama Produk</th>
+        <th>Harga</th>
+      </tr>
+    </thead>
+    <tbody id="productList">
+      <!-- Produk akan dimasukkan lewat JS -->
+    </tbody>
+  </table>
+
+  <div class="total" id="totalInvoice">Total: Rp 0</div>
+
+  <div class="note">
+    <strong>Catatan:</strong><br>
+    Silakan transfer ke rekening yang tertera, lalu kirim bukti pembayaran ke WhatsApp kami. Terima kasih atas kepercayaannya.
+  </div>
+
+  <a href="#" class="btn-print" onclick="window.print()">🖨️ Cetak / Download Invoice</a>
+</div>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const productList = document.getElementById("productList");
+  const totalInvoice = document.getElementById("totalInvoice");
+
+  let total = 0;
+  cart.forEach(item => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${item.nama}</td>
+      <td>Rp ${Number(item.harga).toLocaleString()}</td>
+    `;
+    productList.appendChild(row);
+    total += Number(item.harga);
+  });
+
+  totalInvoice.textContent = `Total: Rp ${total.toLocaleString()}`;
+
+  const tanggal = new Date().toLocaleDateString("id-ID", {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+
+  document.getElementById("tanggalSekarang").textContent = tanggal;
+</script>
+
+</body>
+</html>
+    

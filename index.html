@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUTRA Medika</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo-container">
+      <div class="brand-text">
+        <h1 class="brand-name">PUTRA Medika</h1>
+        <p class="brand-slogan">ALAT-ALAT KESEHATAN PREMIER</p>
+      </div>
+    </div>
+
+    <input 
+      type="text" 
+      placeholder="Cari produk kesehatan..." 
+      class="search-bar" 
+    />
+
+    <button class="btn-cart" onclick="window.location.href='keranjang.html'">
+      🛒 <span class="cart-count">0</span>
+    </button>
+  </header>
+
+  <!-- Banner -->
+  <section class="banner">
+    <img 
+      src="https://tse1.mm.bing.net/th?id=OIP.0nzbFsAYjX37rbeKk591dwHaDe&pid=Api" 
+      alt="Promo PUTRA Medika" 
+    />
+  </section>
+
+  <!-- Produk -->
+  <section class="products">
+    <h2>Produk Unggulan</h2>
+    <div class="product-list">
+
+      <div class="product-card" data-nama="Termometer Digital" data-harga="75000">
+        <img 
+          src="https://tse4.mm.bing.net/th?id=OIP.FF7RoohHK0zYqURYY6oRXwHaHa&pid=Api" 
+          alt="Termometer Digital"
+        />
+        <h3>Termometer Digital</h3>
+        <p>Rp 75.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+
+      <div class="product-card" data-nama="Termometer Digital" data-harga="75000">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.FF7RoohHK0zYqURYY6oRXwHaHa&pid=Api" alt="Termometer Digital" />
+        <h3>Termometer Digital</h3>
+        <p>Rp 75.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <!-- Produk tambahan -->
+      <div class="product-card" data-nama="Tensimeter Manual" data-harga="120000">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.Vbr8FEq2kkPCOjpdEuUAFgHaHa&pid=Api" alt="Tensimeter Manual" />
+        <h3>Tensimeter Manual</h3>
+        <p>Rp 120.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Stetoskop" data-harga="95000">
+        <img src="https://tse4.mm.bing.net/th?id=OIP.lxCHoKXDW8QLxz7PzXmygAHaHa&pid=Api" alt="Stetoskop" />
+        <h3>Stetoskop</h3>
+        <p>Rp 95.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Masker Bedah (50 pcs)" data-harga="30000">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.vqvOpRUEPPYF1uUD61PrpgHaHa&pid=Api" alt="Masker Bedah" />
+        <h3>Masker Bedah (50 pcs)</h3>
+        <p>Rp 30.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Pulse Oximeter" data-harga="150000">
+        <img src="https://tse2.mm.bing.net/th?id=OIP._TLlNtkWZve6ErMMFa3mqwHaHa&pid=Api" alt="Pulse Oximeter" />
+        <h3>Pulse Oximeter</h3>
+        <p>Rp 150.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Alat Cek Gula Darah" data-harga="230000">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.SyQvLVuPhNQXemmsLVKiWgHaHa&pid=Api" alt="Alat Cek Gula Darah" />
+        <h3>Alat Cek Gula Darah</h3>
+        <p>Rp 230.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Nebulizer Portable" data-harga="340000">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.Vtbx8YF_vlPbTi6qZlm7xwHaHa&pid=Api" alt="Nebulizer Portable" />
+        <h3>Nebulizer Portable</h3>
+        <p>Rp 340.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Hand Sanitizer 500ml" data-harga="28000">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.gHT4BtAwJcGh2vbb7P9YOgHaHa&pid=Api" alt="Hand Sanitizer" />
+        <h3>Hand Sanitizer 500ml</h3>
+        <p>Rp 28.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Sarung Tangan Medis (100 pcs)" data-harga="45000">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.tzR23I5q_UZJ-YYXK0h1FgHaHa&pid=Api" alt="Sarung Tangan Medis" />
+        <h3>Sarung Tangan Medis (100 pcs)</h3>
+        <p>Rp 45.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Face Shield" data-harga="25000">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.QvA1vd7Ki3oD_a2MBs9hWQHaHa&pid=Api" alt="Face Shield" />
+        <h3>Face Shield</h3>
+        <p>Rp 25.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Kursi Roda Lipat" data-harga="1150000">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.nkKSoHe5MaA3OEXCKYqJPwHaHa&pid=Api" alt="Kursi Roda Lipat" />
+        <h3>Kursi Roda Lipat</h3>
+        <p>Rp 1.150.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Alat Cek Kolesterol" data-harga="210000">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.ygy7yFcwLlmX2H9sVWj_WAHaHa&pid=Api" alt="Alat Cek Kolesterol" />
+        <h3>Alat Cek Kolesterol</h3>
+        <p>Rp 210.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Infus Set" data-harga="15000">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.smv3APIPXSPnm27zmV5f7gHaHa&pid=Api" alt="Infus Set" />
+        <h3>Infus Set</h3>
+        <p>Rp 15.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Cool Pack Ice Gel" data-harga="18000">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.n8XniWzz_jA5wbRntxjETgHaHa&pid=Api" alt="Cool Pack Ice Gel" />
+        <h3>Cool Pack Ice Gel</h3>
+        <p>Rp 18.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+      <div class="product-card" data-nama="Alkohol Swab" data-harga="10000">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.H7giRvhcxpSgGzIRpEk-BgHaHa&pid=Api" alt="Alkohol Swab" />
+        <h3>Alkohol Swab</h3>
+        <p>Rp 10.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+      
+
+      <div class="product-card" data-nama="Oximeter Finger" data-harga="250000">
+        <img 
+          src="https://tse2.mm.bing.net/th?id=OIP.zJw5399DcPilxbTG1Pn-twHaHa&pid=Api" 
+          alt="Oximeter Finger"
+        />
+        <h3>Oximeter Finger</h3>
+        <p>Rp 250.000</p>
+        <button class="btn-buy" onclick="addToCart(this)">Beli</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Toast Container -->
+  <div id="toast"></div>
+
+  <!-- WhatsApp -->
+  <a 
+    href="https://wa.me/6281234567890" 
+    class="wa-btn" 
+    target="_blank"
+  >
+    💬 Chat via WA
+  </a>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
